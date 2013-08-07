@@ -8,7 +8,7 @@ Text - Simple 1 Class Text Manipulation Library
 Do you remember [PHP's string functions][strings]?
 If not, just wrap you text with `Text`! It will save a minute on your coding.
 
-`Text` is extracted from kzykhys/Ciconia. this is used for markdown processing.
+`Text` is extracted from [kzykhys/Ciconia][ciconia]. this is used for markdown processing.
 
 Installation
 ------------
@@ -134,5 +134,6 @@ Author
 
 Kazuyuki Hayashi (@kzykhys)
 
+[ciconia]:  https://github.com/kzykhys/Ciconia
 [strings]:  http://www.php.net/manual/en/ref.strings.php
 [callable]: http://www.php.net/manual/en/language.types.callable.php
