@@ -1,6 +1,10 @@
 Text - Simple 1 Class Text Manipulation Library
 -----------------------------------------------
 
+[![Latest Stable Version](https://poser.pugx.org/kzykhys/text/v/stable.png)](https://packagist.org/packages/kzykhys/text)
+[![Build Status](https://travis-ci.org/kzykhys/Text.png?branch=master)](https://travis-ci.org/kzykhys/Text)
+[![Coverage Status](https://coveralls.io/repos/kzykhys/Text/badge.png?branch=master)](https://coveralls.io/r/kzykhys/Text?branch=master)
+
 Do you remember [PHP's string functions][strings]?
 If not, just wrap you text with `Text`! It will save a minute on your coding.
 
