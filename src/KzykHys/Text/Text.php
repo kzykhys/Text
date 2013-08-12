@@ -7,13 +7,20 @@ namespace KzykHys\Text;
  *
  * @author Kazuyuki Hayashi <hayashi@valnur.net>
  */
-class Text implements \Serializable
+class Text implements \Serializable, \Countable, \ArrayAccess, \Iterator
 {
 
     /**
      * @var string
      */
     private $text;
+    
+    /**
+     * Position for Iteraror inteface
+     * 
+     * @var int
+     */
+    private $pos;
 
     /**
      * @param string $text
@@ -21,6 +28,7 @@ class Text implements \Serializable
     public function __construct($text = '')
     {
         $this->text = (string) $text;
+        $this->pos = 0;
     }
 
     /**
@@ -361,6 +369,16 @@ class Text implements \Serializable
         return preg_match_all("/[\\\\x00-\\\\xBF]|[\\\\xC0-\\\\xFF][\\\\x80-\\\\xBF]*/", $this->text);
         // @codeCoverageIgnoreEnd
     }
+    
+    /**
+     * Implements Countable interface
+     *
+     * @return int
+     */
+    function count()
+    {
+        return $this->length();
+    }
 
     /**
      * Returns the number of lines
@@ -448,5 +466,63 @@ class Text implements \Serializable
     {
         $this->text = unserialize($serialized);
     }
+
+    /**
+     * Implements ArrayAccess interface
+     *
+     */
+    function offsetExists($key)
+    {
+        return isset($this->text[$key]);
+    }
+
+    function offsetGet($key)
+    {
+        return isset($this->text[$key]) ? $this->text[$key] : null;
+    }
+
+    function offsetSet($offset, $value) {
+        if (is_null($offset)) {
+            $this->text[] = $value;
+        } else {
+            $this->text[$offset] = $value;
+        }
+    }
+
+    function offsetUnset($key) {
+        if(isset($this->text[$key]))
+            unset($this->text[$key]);
+    }
+
+    /**
+     * Implements Iterator interface
+     *
+     */
+    function current()
+    {
+        return $this->text[$this->pos];
+    }
+
+    function rewind()
+    {
+        $this->pos = 0;
+    }
+
+    function key()
+    {
+        return $this->pos;
+    }
+
+    function next()
+    {
+        ++$this->pos;
+    }
+
+    function valid()
+    {
+        return isset($this->text[$this->pos]);
+    }
+
+
 
 }
