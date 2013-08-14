@@ -319,9 +319,17 @@ class Text implements \Serializable
      *
      * @return array
      */
-    public function chars()
+    public function chars($l = 0)
     {
-        return str_split($this->text);
+        if ($l > 0) {
+            $ret = array();
+            $len = mb_strlen($this->text, "UTF-8");
+            for ($i = 0; $i < $len; $i += $l) {
+                $ret[] = mb_substr($this->text, $i, $l, "UTF-8");
+            }
+            return $ret;
+        }
+        return preg_split("//u", $this->text, -1, PREG_SPLIT_NO_EMPTY);
     }
 
     /**
