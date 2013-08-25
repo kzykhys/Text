@@ -8,6 +8,17 @@ use KzykHys\Text\Text;
 class TextTest extends \PHPUnit_Framework_TestCase
 {
 
+    public function testInitialize()
+    {
+        $constructed_text = new Text('foo');
+        $this->assertInstanceOf('KzykHys\Text\Text', $constructed_text);
+
+        $created_text = Text::create('foo');
+        $this->assertInstanceOf('KzykHys\Text\Text', $created_text);
+
+        $this->assertEquals($constructed_text, $created_text);
+    }
+
     public function testAppend()
     {
         $text = new Text('foo');
