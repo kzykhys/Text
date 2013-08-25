@@ -173,6 +173,9 @@ class TextTest extends \PHPUnit_Framework_TestCase
     {
         $text = new Text("foo");
         $this->assertEquals(array('f', 'o', 'o'), $text->chars());
+
+        $text = new Text("あいう");
+        $this->assertEquals(array('あ', 'い', 'う'), $text->chars());
     }
 
     public function testEachLine()

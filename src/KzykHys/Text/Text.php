@@ -321,7 +321,11 @@ class Text implements \Serializable
      */
     public function chars()
     {
-        return str_split($this->text);
+        if (strlen($this->text) == $this->length()) {
+            return str_split($this->text);
+        }
+
+        return preg_split('//u', $this->text, -1, PREG_SPLIT_NO_EMPTY);
     }
 
     /**
