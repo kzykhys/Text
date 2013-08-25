@@ -44,6 +44,19 @@ echo $text;
 // Lorem Ipsum
 ```
 
+`Text` can also be called statically
+
+```
+<?php
+
+use KzykHys\Text\Text;
+
+$text = Text::create('Lorem Ipsum');
+echo $text;
+
+// Lorem Ipsum
+```
+
 Manipulation methods are *chainable*:
 
 ``` php
@@ -83,6 +96,7 @@ API
 
 Method                           | Description
 ---------------------------------|--------------
+create($text)                    | Create a new Text instance.
 append($text)                    | Append the string.
 prepend($text)                   | Prepend the string.
 wrap($start, \[$end])            | Surround text with given string.

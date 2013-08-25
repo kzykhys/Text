@@ -24,6 +24,14 @@ class Text implements \Serializable
     }
 
     /**
+     * @param string $text
+     */
+    public static function create($text = '')
+    {
+        return new static($text);
+    }    
+
+    /**
      * Append the string
      *
      * @param string $text
